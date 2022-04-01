@@ -5,22 +5,8 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 import {Link} from 'react-router-dom';
 
 class Contact extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            firstname: '',
-            lastname: '',
-            telnum: '',
-            email: '',
-            agree: false,
-            contactType: 'Tel.',
-            message: ''
-        };
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
     handleSubmit (values) {
-        // event.preventDefault();
         console.log('Current State is: ' + JSON.stringify(values));
         alert('Current State is: ' + JSON.stringify(values));
     }
