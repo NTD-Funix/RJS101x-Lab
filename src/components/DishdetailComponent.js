@@ -4,11 +4,12 @@ import {Card, CardImg, CardBody, CardTitle, CardText, Breadcrumb, BreadcrumbItem
 import { LocalForm, Control, Errors } from 'react-redux-form';
 import {Link} from 'react-router-dom';
 import {Loading} from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 function RenderDish ({dish}) {
     return (
         <Card>
-            <CardImg src={dish.image} alt={dish.name}/>
+            <CardImg src={baseUrl + dish.image} alt={dish.name}/>
             <CardBody>
                 <CardTitle>{dish.name}</CardTitle>
                 <CardText>{dish.description}</CardText>
@@ -107,34 +108,36 @@ function RenderComments ({comments, addComment, dishId}) {
             </div>
         )
     })
-    return(
-        <div>
-            {comment}
-            <CommentForm addComment={addComment} dishId={dishId}/>
-        </div>
-    )
+        return(
+            <div>
+                {comment}
+                <CommentForm addComment={addComment} dishId={dishId}/>
+            </div>
+        )
 }
 
 const Dishdetail = (props) => {
-    if (props.isLoading) {
+    if(props.isLoading) {
         return (
             <div className="container">
                 <div className="row">
                     <Loading/>
                 </div>
             </div>
-        );
+        )
     }
     else if (props.errMess) {
-        return (
+        return (        
             <div className="container">
                 <div className="row">
                     <h4>{props.errMess}</h4>
                 </div>
             </div>
         );
+        
     }
-    else 
+    else
+    
     return (
         <div className="container">
             <div className="row">
